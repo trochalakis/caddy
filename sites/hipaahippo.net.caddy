@@ -1,0 +1,11 @@
+cardgen.hipaahippo.net {
+	reverse_proxy 192.168.5.98:3000
+}
+mastodon.hipaahippo.net {
+	reverse_proxy 192.168.5.53:3443 {
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
