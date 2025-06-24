@@ -17,7 +17,7 @@
 }
 
 (secure) {
-  forward_auth {args[0]} 192.168.5.5:9091 {
+  forward_auth {args[0]} authelia:9091 {
     uri /api/verify?rd=https://auth.trochalakis.com
     copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
     header_up Host {upstream_hostport}
