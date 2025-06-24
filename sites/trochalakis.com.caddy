@@ -9,7 +9,6 @@ trochalakis.com {
 bookstack.trochalakis.com {
     reverse_proxy 192.168.5.20:6875
 }
-
 hub.trochalakis.com { #Dist Docker Server
 	reverse_proxy 192.168.5.4:30095
 }
@@ -25,7 +24,6 @@ immich.trochalakis.com {
 mealie.trochalakis.com {
 	reverse_proxy 192.168.5.20:9925
 }
-
 (omada_snippet) {
 	header {
                 Strict-Transport-Security "max-age=31536000; includeSubdomains"
@@ -34,7 +32,6 @@ mealie.trochalakis.com {
                 -server
 	}
 }
-
 omada.trochalakis.com {
         reverse_proxy 192.168.5.240:8043 {
                 transport http {
