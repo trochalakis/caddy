@@ -1,0 +1,34 @@
+(dns-cert) {
+        tls {
+                dns cloudflare {
+                        zone_token {env.CF_ZONE_TOKEN}
+                        api_token {env.CF_API_TOKEN}            
+                }
+                resolvers 1.1.1.1
+        }
+}
+
+(intranet) {
+        @private not client_ip 192.168.5.0/24
+        handle @private {
+                root * /var/www/static_pages/no_vpn
+                file_server
+        }
+}
+
+(secure) {
+  forward_auth {args[0]} 192.168.5.5:9091 {
+    uri /api/verify?rd=https://auth.trochalakis.com
+    copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+    header_up Host {upstream_hostport}
+  }
+}
+
+
+#Authelia Portal
+auth.trochalakis.com {
+	reverse_proxy 192.168.5.5:9091 {
+	}
+}
+
+import /etc/caddy/files/*.caddy
