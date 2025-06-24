@@ -27,7 +27,7 @@
 
 #Authelia Portal
 auth.trochalakis.com {
-	reverse_proxy 192.168.5.5:9091 {
+	reverse_proxy authelia:9091 {
 	}
 }
 
