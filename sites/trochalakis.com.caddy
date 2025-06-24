@@ -1,1 +1,133 @@
 
+trochalakis.com {
+	header /.well-known/matrix/* Content-Type application/json
+	header /.well-known/matrix/* Access-Control-Allow-Origin *
+	respond /.well-known/matrix/server `{"m.server": "matrix.trochalakis.com:443"}`
+	respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.trochalakis.com"}}`
+}
+
+#Plex Config
+
+plex.trochalakis.com {
+	import secure *
+
+	reverse_proxy 192.168.5.40:32400
+}
+
+tautulli.trochalakis.com {
+	import secure *
+
+	reverse_proxy 192.168.5.46:8181
+}
+
+jelly.trochalakis.com {
+	reverse_proxy 192.168.5.98:8096
+}
+jfa.trochalakis.com {
+	reverse_proxy 192.168.5.98:8056
+}
+
+podgrab.trochalakis.com {
+	reverse_proxy 192.168.5.24:8380
+}
+
+audiobookshelf.trochalakis.com {
+	reverse_proxy 192.168.5.24:13378
+
+media.trochalakis.com {
+    redir /overseerr /overseerr/
+    redir /radarr /radarr/
+    redir /sonarr /sonarr/
+    redir /lidarr /lidarr/
+    redir /readarr /readarr/
+    redir /prowlarr /prowlarr/
+    redir /bazarr /bazarr/
+    redir /syncthing /syncthing/
+
+    handle /overseerr* {
+	uri strip_prefix /overseerr
+
+        reverse_proxy 192.168.5.24:5055 {
+		header_down Location ^/(.*) /overseerr/
+	}
+    }
+
+    handle /radarr/* {
+        reverse_proxy 192.168.5.24:7878
+    }
+
+    handle /sonarr/* {
+        reverse_proxy 192.168.5.24:8989
+    }
+
+    handle /lidarr/* {
+        reverse_proxy 192.168.5.24:8686
+
+    }
+    handle /readarr/* {
+	reverse_proxy 192.168.5.24:8787
+    }
+    handle /prowlarr/* {
+        reverse_proxy 192.168.5.24:9696
+    }
+
+    handle /bazarr/* {
+        reverse_proxy 192.168.5.24:6767
+    }
+
+    handle_path /syncthing/* {
+	reverse_proxy 192.168.5.24:8384
+    }
+    
+    handle {
+        reverse_proxy 192.168.5.24:7575
+    }
+
+}
+
+overseerr.trochalakis.com {
+	reverse_proxy 192.168.5.24:5055
+}
+
+tdarr.trochalakis.com {
+	reverse_proxy 192.168.5.24:8265
+}
+
+frigate.trochalakis.com {
+	reverse_proxy 192.168.5.86:80
+}
+
+harbor.trochalakis.com {
+	reverse_proxy 192.168.5.214
+}
+
+(omada_snippet) {
+	header {
+                Strict-Transport-Security "max-age=31536000; includeSubdomains"
+                X-XSS-Protection "1; mode=block"
+		X-Frame-Options "DENY"
+                -server
+	}
+}
+
+omada.trochalakis.com {
+        reverse_proxy 192.168.5.240:8043 {
+                transport http {
+                        tls_insecure_skip_verify
+                }
+                header_up host "omada.trochalakis.com:443"
+        }
+        import omada_snippet
+}
+
+mealie.trochalakis.com {
+	reverse_proxy 192.168.5.20:9925
+}
+
+recipe.trochalakis.com {
+	reverse_proxy 192.168.5.20:9925
+}
+
+immich.trochalakis.com {
+	reverse_proxy 192.168.5.24:2283
+}
