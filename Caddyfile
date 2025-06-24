@@ -35,4 +35,4 @@ auth.trochalakis.com {
 	respond "It works!"
 }
 
-import /etc/caddy/files/*.caddy
+import /etc/caddy/sites/*.caddy
