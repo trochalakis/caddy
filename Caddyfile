@@ -31,4 +31,8 @@ auth.trochalakis.com {
 	}
 }
 
+:80 {
+	respond "It works!"
+}
+
 import /etc/caddy/files/*.caddy
