@@ -24,6 +24,8 @@
 
 #Authelia Portal
 auth.trochalakis.com {
+	import dns-cert
+
 	reverse_proxy authelia:9091 {
 	}
 }
