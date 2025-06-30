@@ -26,8 +26,7 @@
 auth.trochalakis.com {
 	import dns-cert
 
-	reverse_proxy authelia:9091 {
-	}
+	reverse_proxy authelia:9091
 }
 
 :80 {
