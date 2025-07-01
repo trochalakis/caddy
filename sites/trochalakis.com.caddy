@@ -180,3 +180,7 @@ certs.trochalakis.com {
 http://cert.trochalakis.com {
 	reverse_proxy 192.168.5.20:2377
 }
+
+uptime.trochalakis.com {
+	reverse_proxy 192.168.5.222:3001
+}
