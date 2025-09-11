@@ -31,14 +31,8 @@ truecommand.trochalakis.net {
                 }
         }
 }
-urbackup.trochalakis.net {
-        reverse_proxy 192.168.5.74:55414
-}
 portal.trochalakis.net {
         reverse_proxy 192.168.5.75:3001
-}
-snipe.trochalakis.net {
-        reverse_proxy 192.168.5.113:8000
 }
 gamevault.trochalakis.net {
         reverse_proxy 192.168.5.74:8080
