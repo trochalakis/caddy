@@ -51,16 +51,6 @@ rss.trochalakis.com {
 
         reverse_proxy 192.168.75.20:8098
 }
-podgrab.trochalakis.com {
-    import dns-cert
-
-        reverse_proxy 192.168.5.24:8380
-}
-audiobookshelf.trochalakis.com {
-    import dns-cert
-
-        reverse_proxy 192.168.5.24:13378
-}
 jellyfin.trochalakis.com {
         import dns-cert
 
