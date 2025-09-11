@@ -43,3 +43,51 @@ snipe.trochalakis.net {
 gamevault.trochalakis.net {
         reverse_proxy 192.168.5.74:8080
 }
+media.trochalakis.net {
+    import dns-cert
+
+    redir /overseerr /overseerr/
+    redir /radarr /radarr/
+    redir /sonarr /sonarr/
+    redir /lidarr /lidarr/
+    redir /readarr /readarr/
+    redir /prowlarr /prowlarr/
+    redir /bazarr /bazarr/
+    redir /syncthing /syncthing/
+    handle /overseerr* {
+        uri strip_prefix /overseerr
+
+        reverse_proxy 192.168.5.24:5055 {
+                header_down Location ^/(.*) /overseerr/
+        }
+    }
+    handle /radarr/* {
+        reverse_proxy 192.168.5.24:7878
+    }
+    handle /sonarr/* {
+        reverse_proxy 192.168.5.24:8989
+    }
+    handle /lidarr/* {
+        reverse_proxy 192.168.5.24:8686
+    }
+    handle /readarr/* {
+        reverse_proxy 192.168.5.24:8787
+    }
+    handle /prowlarr/* {
+        reverse_proxy 192.168.5.24:9696
+    }
+    handle /bazarr/* {
+        reverse_proxy 192.168.5.24:6767
+    }
+    handle_path /syncthing/* {
+        reverse_proxy 192.168.5.24:8384
+    }
+    handle {
+        reverse_proxy 192.168.5.24:7575
+    }
+}
+tdarr.trochalakis.net {
+    import dns-cert
+
+    reverse_proxy 192.168.5.24:8265
+}

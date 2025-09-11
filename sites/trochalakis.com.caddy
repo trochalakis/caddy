@@ -12,20 +12,10 @@ bookstack.trochalakis.com {
 
     reverse_proxy 192.168.5.20:6875
 }
-hub.trochalakis.com { #Dist Docker Server
-    import dns-cert
-
-        reverse_proxy 192.168.5.4:30095
-}
 frigate.trochalakis.com {
     import dns-cert
 
         reverse_proxy 192.168.5.86:80
-}
-harbor.trochalakis.com {
-    import dns-cert
-
-        reverse_proxy 192.168.5.214
 }
 immich.trochalakis.com {
     import dns-cert
@@ -56,11 +46,6 @@ omada.trochalakis.com {
     }
     import omada_snippet
 }
-ai.trochalakis.com {
-    import dns-cert
-
-        reverse_proxy 192.168.5.93:8080
-}
 rss.trochalakis.com {
     import dns-cert
 
@@ -81,11 +66,6 @@ jellyfin.trochalakis.com {
 
         reverse_proxy 192.168.5.74:30013
 }
-jfa.trochalakis.com {
-    import dns-cert
-
-        reverse_proxy 192.168.5.98:8056
-}
 plex.trochalakis.com {
     import dns-cert
 
@@ -96,64 +76,10 @@ tautulli.trochalakis.com {
 
         reverse_proxy 192.168.5.46:8181
 }
-media.trochalakis.com {
-    import dns-cert
-
-    redir /overseerr /overseerr/
-    redir /radarr /radarr/
-    redir /sonarr /sonarr/
-    redir /lidarr /lidarr/
-    redir /readarr /readarr/
-    redir /prowlarr /prowlarr/
-    redir /bazarr /bazarr/
-    redir /syncthing /syncthing/
-    handle /overseerr* {
-        uri strip_prefix /overseerr
-
-        reverse_proxy 192.168.5.24:5055 {
-                header_down Location ^/(.*) /overseerr/
-        }
-    }
-    handle /radarr/* {
-        reverse_proxy 192.168.5.24:7878
-    }
-    handle /sonarr/* {
-        reverse_proxy 192.168.5.24:8989
-    }
-    handle /lidarr/* {
-        reverse_proxy 192.168.5.24:8686
-    }
-    handle /readarr/* {
-        reverse_proxy 192.168.5.24:8787
-    }
-    handle /prowlarr/* {
-        reverse_proxy 192.168.5.24:9696
-    }
-    handle /bazarr/* {
-        reverse_proxy 192.168.5.24:6767
-    }
-    handle_path /syncthing/* {
-        reverse_proxy 192.168.5.24:8384
-    }
-    handle {
-        reverse_proxy 192.168.5.24:7575
-    }
-}
 overseerr.trochalakis.com {
     import dns-cert
 
         reverse_proxy 192.168.5.24:5055
-}
-tdarr.trochalakis.com {
-    import dns-cert
-
-        reverse_proxy 192.168.5.24:8265
-}
-sql.trochalakis.com {
-    import dns-cert
-        import secure *
-
-        reverse_proxy 192.168.5.83
 }
 hass.trochalakis.com {
     import dns-cert
