@@ -1,3 +1,45 @@
 http://apt.trochalakis.net {
-	reverse_proxy 192.168.5.29:3142
+        reverse_proxy 192.168.5.29:3142
+}
+
+ai.trochalakis.net, openwebui.trochalakis.net {
+        reverse_proxy 192.168.5.229:3000
+}
+
+monica.trochalakis.net {
+        reverse_proxy 192.168.5.238:80
+}
+cloud.trochalakis.net {
+        reverse_proxy 192.168.5.74:30027
+}
+planka.trochalakis.net {
+        reverse_proxy 192.168.5.233:3000
+}
+archive.trochalakis.net {
+        reverse_proxy 192.168.5.231:8000
+}
+grafana.trochalakis.net {
+        reverse_proxy 192.168.5.222:3000
+}
+scrutiny.trochalakis.net {
+        reverse_proxy 192.168.5.222:8080
+}
+truecommand.trochalakis.net {
+        reverse_proxy 192.168.5.243:443 {
+                transport http {
+                        tls_insecure_skip_verify
+                }
+        }
+}
+urbackup.trochalakis.net {
+        reverse_proxy 192.168.5.74:55414
+}
+portal.trochalakis.net {
+        reverse_proxy 192.168.5.75:3001
+}
+snipe.trochalakis.net {
+        reverse_proxy 192.168.5.113:8000
+}
+gamevault.trochalakis.net {
+        reverse_proxy 192.168.5.74:8080
 }

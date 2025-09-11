@@ -1,11 +1,10 @@
-
 trochalakis.com {
     import dns-cert
 
-	header /.well-known/matrix/* Content-Type application/json
-	header /.well-known/matrix/* Access-Control-Allow-Origin *
-	respond /.well-known/matrix/server `{"m.server": "matrix.trochalakis.com:443"}`
-	respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.trochalakis.com"}}`
+        header /.well-known/matrix/* Content-Type application/json
+        header /.well-known/matrix/* Access-Control-Allow-Origin *
+        respond /.well-known/matrix/server `{"m.server": "matrix.trochalakis.com:443"}`
+        respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.trochalakis.com"}}`
 }
 
 bookstack.trochalakis.com {
@@ -16,35 +15,35 @@ bookstack.trochalakis.com {
 hub.trochalakis.com { #Dist Docker Server
     import dns-cert
 
-	reverse_proxy 192.168.5.4:30095
+        reverse_proxy 192.168.5.4:30095
 }
 frigate.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.86:80
+        reverse_proxy 192.168.5.86:80
 }
 harbor.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.214
+        reverse_proxy 192.168.5.214
 }
 immich.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.24:2283
+        reverse_proxy 192.168.5.74:30041
 }
 mealie.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.20:9925
+        reverse_proxy 192.168.5.20:9925
 }
 (omada_snippet) {
-	header {
+        header {
                 Strict-Transport-Security "max-age=31536000; includeSubdomains"
                 X-XSS-Protection "1; mode=block"
-		X-Frame-Options "DENY"
+                X-Frame-Options "DENY"
                 -server
-	}
+        }
 }
 omada.trochalakis.com {
     import dns-cert
@@ -60,42 +59,42 @@ omada.trochalakis.com {
 ai.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.93:8080
+        reverse_proxy 192.168.5.93:8080
 }
 rss.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.75.20:8098
+        reverse_proxy 192.168.75.20:8098
 }
 podgrab.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.24:8380
+        reverse_proxy 192.168.5.24:8380
 }
 audiobookshelf.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.24:13378
+        reverse_proxy 192.168.5.24:13378
 }
-jelly.trochalakis.com {
-    import dns-cert
+jellyfin.trochalakis.com {
+        import dns-cert
 
-	reverse_proxy 192.168.5.98:8096
+        reverse_proxy 192.168.5.74:30013
 }
 jfa.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.98:8056
+        reverse_proxy 192.168.5.98:8056
 }
 plex.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.40:32400
+        reverse_proxy 192.168.5.40:32400
 }
 tautulli.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.46:8181
+        reverse_proxy 192.168.5.46:8181
 }
 media.trochalakis.com {
     import dns-cert
@@ -109,11 +108,11 @@ media.trochalakis.com {
     redir /bazarr /bazarr/
     redir /syncthing /syncthing/
     handle /overseerr* {
-	uri strip_prefix /overseerr
+        uri strip_prefix /overseerr
 
         reverse_proxy 192.168.5.24:5055 {
-		header_down Location ^/(.*) /overseerr/
-	}
+                header_down Location ^/(.*) /overseerr/
+        }
     }
     handle /radarr/* {
         reverse_proxy 192.168.5.24:7878
@@ -125,7 +124,7 @@ media.trochalakis.com {
         reverse_proxy 192.168.5.24:8686
     }
     handle /readarr/* {
-	reverse_proxy 192.168.5.24:8787
+        reverse_proxy 192.168.5.24:8787
     }
     handle /prowlarr/* {
         reverse_proxy 192.168.5.24:9696
@@ -134,7 +133,7 @@ media.trochalakis.com {
         reverse_proxy 192.168.5.24:6767
     }
     handle_path /syncthing/* {
-	reverse_proxy 192.168.5.24:8384
+        reverse_proxy 192.168.5.24:8384
     }
     handle {
         reverse_proxy 192.168.5.24:7575
@@ -143,44 +142,59 @@ media.trochalakis.com {
 overseerr.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.24:5055
+        reverse_proxy 192.168.5.24:5055
 }
 tdarr.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.24:8265
+        reverse_proxy 192.168.5.24:8265
 }
 sql.trochalakis.com {
     import dns-cert
-	import secure *
+        import secure *
 
-	reverse_proxy 192.168.5.83
+        reverse_proxy 192.168.5.83
 }
 hass.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.25:8123
+        reverse_proxy 192.168.5.25:8123
 }
 cdn.trochalakis.com {
     import dns-cert
 
-	reverse_proxy 192.168.5.20:8081
+        reverse_proxy 192.168.5.176:80
 }
 paperless.trochalakis.com {
     import dns-cert
-	import secure *
+        import secure *
 
-	reverse_proxy 192.168.5.97:8010
+        reverse_proxy 192.168.5.97:8010
 }
 certs.trochalakis.com {
     import dns-cert
-    
-	reverse_proxy 192.168.5.20:2377
+
+        reverse_proxy 192.168.5.20:2377
 }
 http://cert.trochalakis.com {
-	reverse_proxy 192.168.5.20:2377
+        reverse_proxy 192.168.5.20:2377
 }
 
 uptime.trochalakis.com, gamestatus.trochalakis.com {
-	reverse_proxy 192.168.5.222:3001
+        reverse_proxy 192.168.5.222:3001
+}
+cloud.trochalakis.com {
+        import dns-cert
+
+        reverse_proxy 192.168.5.74:30027
+}
+sts.trochalakis.com {
+    reverse_proxy adfs.internal:443 {
+        transport http {
+            tls
+        }
+        header_up Host {host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+    }
 }
