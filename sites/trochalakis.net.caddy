@@ -85,3 +85,9 @@ tdarr.trochalakis.net {
 
     reverse_proxy 192.168.5.24:8265
 }
+garage.trochalakis.net {
+        reverse_proxy 192.168.5.74:30186
+}
+s3.trochalakis.net {
+        reverse_proxy 192.168.5.74:30188
+}
